@@ -33,7 +33,7 @@ public class TodoServiceImpl implements TodoService {
     public TodoDto save(TodoDto todoDto) {
         List<String> errors = TodoValidator.validateTodo(todoDto);
         if (!errors.isEmpty()) {
-            log.error("Todo is not valid {}", todoDto);
+            //log.error("Todo is not valid {}", todoDto);
             throw new InvalidEntityException("Todo is not valid", ErrorCodes.TODO_NOT_VALID, errors);
         }
         return TodoDto.fromEntity(todoRepository.save(TodoDto.toEntity(todoDto)));
